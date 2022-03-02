@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Layout from './containers/layout/Layout';
 
 function App() {
   return (
     <div>
-      
+      <Layout>
+        main content
+      </Layout>
     </div>
   );
 }
