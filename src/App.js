@@ -1,11 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
 
+import Layout from './containers/layout/Layout';
+import MainContent from './containers/mainContent/MainContent';
 function App() {
   return (
-    <div>
-      
-    </div>
+    
+      <Layout>
+        <MainContent/>
+      </Layout>
+    
   );
 }
 
