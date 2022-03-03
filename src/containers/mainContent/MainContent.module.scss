@@ -1,0 +1,91 @@
+//Colors and bg
+.GreenBg{
+    background: rgb(50,167,126);
+    background: linear-gradient(146deg, rgba(50,167,126,1) 13%, rgba(34,194,138,1) 14%);
+}
+
+.WhiteBg{
+    background-color: #fff;
+}
+.WhiteCl{
+    color:white;
+}
+.GreenCl{
+    color:rgb(50,167,126);
+}
+// Font weight
+.Bold{
+    font-weight: 600;
+}
+//Cards
+.SmallCard, .MediumCard, .LargeCard{
+    width:100%;
+    padding: 5px 8px;
+    float:left;
+    border-radius: 8px;
+}
+
+
+.TextAlignCenter{
+    text-align: center;
+}
+
+
+@media (min-width:768px) {
+    .SmallCard{
+        width:32%;
+    }
+    .MediumCard{
+        width:66%;
+    }
+
+    .Ml{
+        margin-left: 2%;
+    }
+    .Mr{
+        margin-right: 2%;
+    }
+    
+}
+
+//Buttons
+
+.SmallBtn{
+    width:50%;
+}
+
+.BtnGrey:hover{
+    background-color: rgb(238, 238, 238);
+    transition: ease-in 0.3s;
+}
+
+//Icons
+.Icon{
+    margin: 5px 0;
+}
+.Icon svg{
+    height: 35px;
+    width: 80px;
+    color: rgba(255, 255, 255, 0.30);
+    border-radius: 10px;
+}
+
+//
+.NrContactos{
+    font-family: 'Roboto',sans-serif;
+    font-size: 45px;
+    font-weight: 700;
+    color:#22C28A;
+    text-align: center;
+}
+
+.Titulo{
+    font-size: 26px;
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+
+.SimpleText{
+    margin: 0;
+    font-size: 12px;
+}
