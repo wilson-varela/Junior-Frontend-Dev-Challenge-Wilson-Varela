@@ -10,8 +10,15 @@ class Layout extends Component{
         return (
             <Auxiliar>
                 <Navbar/>
-                <main>{this.props.children}</main>
-                <RightSidebar/>
+                <div className="container">
+                    <div className="row">
+                        <main>
+                            {this.props.children}
+                        </main>
+                        <RightSidebar/>
+                        
+                    </div>
+                </div>
                 <Footer/>
             </Auxiliar>
         )
