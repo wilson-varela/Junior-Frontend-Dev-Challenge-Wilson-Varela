@@ -4,6 +4,8 @@ import Card from '../../components/ui/cards/Card';
 import classes from './MainContent.module.scss';
 import Button from '../../components/ui/button/Button';
 import { FaPlusSquare } from "react-icons/fa";
+import Input from '../../components/ui/input/Input';
+
 class MainContent extends Component{
     render(){
         return(
@@ -30,6 +32,11 @@ class MainContent extends Component{
                         <div className='col-10'>
                             <p className={`${classes.Titulo} ${classes.Bold}`}>Contactos <span className={classes.GreenCl}>Adicionados</span></p>
                             <p className={`${classes.SimpleText}`}>Uma plataforma especializada na prospecção de novos clientes para o seu negócio.</p>
+                        </div>
+                        <div className={`col-12 ${classes.FiltroDiv}`}>
+                            <p className={classes.Separador}></p>
+                            <Input inputLabel="Nome" inputType="text"/>
+
                         </div>
                     </div>
                 </Card>
