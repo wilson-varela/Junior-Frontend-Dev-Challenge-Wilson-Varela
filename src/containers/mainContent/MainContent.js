@@ -5,8 +5,9 @@ import classes from './MainContent.module.scss';
 import Button from '../../components/ui/button/Button';
 import { FaPlusSquare } from "react-icons/fa";
 import {FaSearch} from "react-icons/fa";
+import {FaExpandAlt} from "react-icons/fa";
 import Input from '../../components/ui/input/Input';
-
+import ContactImg from '../../assets/images/contact.jpg';
 class MainContent extends Component{
     render(){
         return(
@@ -54,9 +55,39 @@ class MainContent extends Component{
                         </div>
                     </div>
                 </Card>
-                <div>
+                <div className={classes.LineSeparator}></div>
+                
+                <Card width={classes.ExtraSmallCard} mr={classes.Mr}>
+                    <div className={`row ${classes.ContactDetails}`}>
+                        <div className="col-3"><img src={ContactImg}/></div>
+                        <div className="col-9">
+                            <p className={classes.SemMargem}><b>Nome Completo</b></p>
+                            <p className={` ${classes.SemMargem}`}>email@gmail.com</p>
+                        </div>
+                        <div className={`col-12 ${classes.ContactDetailsBody}`}>
+                            <p className={` ${classes.SemMargem}`}><span className={classes.Bold}>Empresa:</span> xxxxx</p>
+                            <p className={` ${classes.SemMargem}`}><span className={classes.Bold}>website:</span> xxxxx</p>
+                            <p className={` ${classes.SemMargem}`}><span className={classes.Bold}>Código Postal:</span> xxxxx</p>
+                        </div>
+                        <div className="col-12">
+                            <span className={classes.LeftBorder}></span>
+                            <div className={`${classes.ContactDetailsFooter} ${classes.FloatLeft}`}>8444444444</div>
+                            <Button 
+                                width={classes.ExtraSmallBtn} 
+                                bgColor={classes.GreenBg} 
+                                color={classes.WhiteCl}
+                                hover={classes.BtnGreen}
+                                
+                                >
+                                    <FaExpandAlt/>
+                            </Button>
+                        </div>
+
+                    </div>
+                </Card>
                     
-                </div>
+                   
+                
             </Auxiliar>
         )
     }
