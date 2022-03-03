@@ -7,7 +7,7 @@ const Footer = ()=>{
             <div className={`row ${classes.Footer}`}>
                 <footer>
                     <div className="col-12">
-                        <span>&copy;Colab Pub Inc. Todos direitos reservados</span>
+                        <span>&copy; Colab Pub Inc. Todos direitos reservados</span>
                     </div>
                 </footer>
             </div>

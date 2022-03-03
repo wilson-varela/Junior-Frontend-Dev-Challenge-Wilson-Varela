@@ -12,7 +12,7 @@ class Layout extends Component{
                 <Navbar/>
                 <div className="container">
                     <div className="row">
-                        <main>
+                        <main className='col-lg-9'>
                             {this.props.children}
                         </main>
                         <RightSidebar/>
