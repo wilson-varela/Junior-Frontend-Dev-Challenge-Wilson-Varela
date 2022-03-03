@@ -3,7 +3,7 @@ import classes from './Footer.module.scss';
 
 const Footer = ()=>{
     return (
-        <div className={`container-fluid`}>
+        <div className={`container-fluid mt-auto`}>
             <div className={`row ${classes.Footer}`}>
                 <footer>
                     <div className="col-12">
