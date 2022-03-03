@@ -45,18 +45,37 @@
     .Mr{
         margin-right: 2%;
     }
+
+    
     
 }
 
 //Buttons
 
 .SmallBtn{
+    width:30%;
+}
+.MediumBtn{
     width:50%;
+}
+
+.BtnFiltro{
+    margin-top: 17px;
+    font-size: 12.8px;
 }
 
 .BtnGrey:hover{
     background-color: rgb(238, 238, 238);
     transition: ease-in 0.3s;
+}
+.BtnGreen:hover{
+    background: rgba(50,167,126,0.8);
+    background: linear-gradient(146deg, rgba(50,167,126,0.8) 15%, rgba(34,194,138,0.8) 17%);
+    transition: ease-in-out 1s;
+}
+//Adiciona margin-bottom ao botao novo contacto
+.BtnNovomb{
+    margin-bottom: 21px;
 }
 
 //Icons
@@ -96,4 +115,15 @@
     margin-top:4px;
     margin-bottom: 0;
     padding-top: 6px;
+}
+
+//Inputs
+.SmallInput{
+    width: 33%;
+    float: left;
+}
+
+.MediumInput{
+    width:50%;
+    float: left;
 }

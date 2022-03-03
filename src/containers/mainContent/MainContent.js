@@ -4,26 +4,31 @@ import Card from '../../components/ui/cards/Card';
 import classes from './MainContent.module.scss';
 import Button from '../../components/ui/button/Button';
 import { FaPlusSquare } from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
 import Input from '../../components/ui/input/Input';
 
 class MainContent extends Component{
     render(){
         return(
             <Auxiliar>
+                {/* Card para adicionar novo contacto*/}
                 <Card style = {classes.GreenBg} width={classes.SmallCard} mr={classes.Mr} tAlign={classes.TextAlignCenter}>
                     <span className={classes.Icon}><FaPlusSquare/></span>
                     <p className={`${classes.WhiteCl} ${classes.Bold}`}>Adicionar Contacto</p>
                     <Button 
-                        width={classes.SmallBtn}
+                        width={classes.MediumBtn}
                          bgColor={classes.WhiteBg} 
                          color={classes.GreenCl}
                         hover={classes.BtnGrey}
+                        mb={classes.BtnNovomb}
                     
                          
                          >
                              Novo contacto
                     </Button>
                 </Card>
+
+                 {/* Card do filtro*/}
                 <Card  width={classes.MediumCard } >
                     <div className='row'> 
                         <div className={`col-2 ${classes.TextAlignCenter}`}>
@@ -35,11 +40,23 @@ class MainContent extends Component{
                         </div>
                         <div className={`col-12 ${classes.FiltroDiv}`}>
                             <p className={classes.Separador}></p>
-                            <Input inputLabel="Nome" inputType="text"/>
-
+                            <Input width={classes.SmallInput} inputLabel="Nome" inputType="text"/>
+                            <Input width={classes.SmallInput} inputLabel="Categorias" inputType="text"/>
+                            <Button 
+                                width={classes.SmallBtn}
+                                bgColor={classes.GreenBg} 
+                                color={classes.WhiteCl}
+                                hover={classes.BtnGreen}
+                                btnFiltro={classes.BtnFiltro}
+                                >
+                                    <FaSearch/>
+                            </Button>
                         </div>
                     </div>
                 </Card>
+                <div>
+                    
+                </div>
             </Auxiliar>
         )
     }

@@ -3,3 +3,19 @@
     font-size: 12px;
 }
 
+.InputDiv label{
+    color:#ACACAD;
+}
+.InputDiv input{
+    padding: 2px 6px;
+}
+.LeftBorder{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 4px;
+    height: 25.5px;
+    background: #22C28A;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
