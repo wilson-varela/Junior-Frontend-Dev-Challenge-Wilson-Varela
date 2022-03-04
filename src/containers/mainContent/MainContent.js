@@ -9,7 +9,26 @@ import Input from '../../components/ui/input/Input';
 import NewContact from '../contacts/newcontact/NewContact';
 import ContactDetails from '../contacts/contactdetails/ContactDetails';
 import DeleteContact from '../contacts/deletecontact/DeleteContact';
+import axios from 'axios';
+
 class MainContent extends Component{
+    
+    state = {
+        contacts:[]
+    }
+
+    componentDidMount(){
+        axios.get('https://34100289-review-master-8dyme2.preview.eks.technoplus.link/api/v1/contacts')
+            .then(response=>{
+                this.setState({ contacts:response.data})
+                console.log(response.data)
+            })
+
+    }
+
+
+
+
     render(){
         return(
             <Auxiliar>
@@ -59,18 +78,6 @@ class MainContent extends Component{
                 <div className={classes.LineSeparator}></div>
                 
                 
-
-                <Card  width={classes.MediumCard } >
-                    <div className='row'> 
-                        
-                        <div className={`col-12 `}>
-                            <NewContact/>
-                        </div>
-                    </div>
-                </Card>
-
-                <ContactDetails/>
-                <DeleteContact/>
 
                 
             </Auxiliar>
