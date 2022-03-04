@@ -8,6 +8,7 @@ import {FaSearch} from "react-icons/fa";
 import {FaExpandAlt} from "react-icons/fa";
 import Input from '../../components/ui/input/Input';
 import ContactImg from '../../assets/images/contact.jpg';
+import NewContact from '../newcontact/NewContact';
 class MainContent extends Component{
     render(){
         return(
@@ -59,7 +60,7 @@ class MainContent extends Component{
                 
                 <Card width={classes.ExtraSmallCard} mr={classes.Mr}>
                     <div className={`row ${classes.ContactDetails}`}>
-                        <div className="col-3"><img src={ContactImg}/></div>
+                        <div className="col-3"><img src={ContactImg} alt="profile"/></div>
                         <div className="col-9">
                             <p className={classes.SemMargem}><b>Nome Completo</b></p>
                             <p className={` ${classes.SemMargem}`}>email@gmail.com</p>
@@ -83,6 +84,15 @@ class MainContent extends Component{
                             </Button>
                         </div>
 
+                    </div>
+                </Card>
+
+                <Card  width={classes.MediumCard } >
+                    <div className='row'> 
+                        
+                        <div className={`col-12 `}>
+                            <NewContact/>
+                        </div>
                     </div>
                 </Card>
                     
