@@ -2,6 +2,7 @@ import React from 'react';
 import auxclass from '../../containers/mainContent/MainContent.module.scss';
 import classes from './Banner.module.scss';
 import personImage from '../../assets/images/right-sidebar.png';
+
 const Banner =()=>{
     return (
         <div className='card' >
