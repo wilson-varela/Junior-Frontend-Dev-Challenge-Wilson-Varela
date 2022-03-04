@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Auxiliar from '../auxiliar/Auxiliar';
-import Form from '../../components/form/Form';
-import Input from '../../components/ui/input/Input';
-import auxclass from '../mainContent/MainContent.module.scss';
-import Button from '../../components/ui/button/Button';
+import Auxiliar from '../../auxiliar/Auxiliar';
+import Form from '../../../components/form/Form';
+import Input from '../../../components/ui/input/Input';
+import auxclass from '../../mainContent/MainContent.module.scss';
+import Button from '../../../components/ui/button/Button';
 import { FaPlus} from "react-icons/fa";
 import classes from './NewContact.module.scss';
 class NewContact extends Component{

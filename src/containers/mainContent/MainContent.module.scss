@@ -18,15 +18,27 @@
     background: rgb(50,167,126);
     background: linear-gradient(146deg, rgba(50,167,126,1) 13%, rgba(34,194,138,1) 14%);
 }
-
+.RedBg{
+    background: rgb(245, 42, 42);
+    background: linear-gradient(146deg, rgb(245, 42, 42,1) 20%, rgba(255, 58, 58,1) 21%);
+}
 .WhiteBg{
     background-color: #fff;
 }
 .WhiteCl{
-    color:white;
+    color:#fff;
+}
+.BlackCl{
+    color:#000;
 }
 .GreenCl{
     color:rgb(50,167,126);
+}
+.RedCl{
+    color:rgb(245, 42, 42);
+}
+.GreyCl{
+    color:#ACACAD;
 }
 // Font weight
 .Bold{
@@ -117,6 +129,11 @@
 .BtnGreen:hover{
     background: rgba(50,167,126,0.8);
     background: linear-gradient(146deg, rgba(50,167,126,0.8) 15%, rgba(34,194,138,0.8) 17%);
+    transition: ease-in-out 1s;
+}
+.BtnRed:hover{
+    background: rgb(245, 42, 42,0.8);
+    background: linear-gradient(146deg, rgb(245, 42, 42,0.8) 25%, rgba(255, 58, 58,0.8) 26%);
     transition: ease-in-out 1s;
 }
 //Adiciona margin-bottom ao botao novo contacto
