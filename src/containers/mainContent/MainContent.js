@@ -6,27 +6,62 @@ import Button from '../../components/ui/button/Button';
 import { FaPlusSquare } from "react-icons/fa";
 import {FaSearch} from "react-icons/fa";
 import Input from '../../components/ui/input/Input';
+import axios from 'axios';
+import Contacts from '../contacts/Contacts';
+import Modal from '../../components/ui/modal/Modal';
 import NewContact from '../contacts/newcontact/NewContact';
 import ContactDetails from '../contacts/contactdetails/ContactDetails';
-import DeleteContact from '../contacts/deletecontact/DeleteContact';
-import axios from 'axios';
 
 class MainContent extends Component{
     
     state = {
-        contacts:[]
+        contacts:[{"id":1,"name":"Leanne Graham","email":"Sincere@april.biz",
+        "phone":"1-770-736-8031 x56442","website":"hildegard.org",
+        "company":{"name":"Romaguera-Crona","type":"harness real-time e-market"},
+        "address":{"street":"Kulas Light","city":"Gwenborough","zipCode":"92998-3874"}},
+        {"id":2,"name":"Adolfo Ricardo","email":"Sincere@april.biz",
+        "phone":"1-770-736-8031 x56442","website":"hildegard.org",
+        "company":{"name":"Romaguera-Crona","type":"harness real-time e-market"},
+        "address":{"street":"Kulas Light","city":"Gwenborough","zipCode":"92998-3874"}}
+    ],
+        newContactModalOpen:false,
+        contactDetailsModalOpen:false,
+        deleteModalOpen:false,
+        singleContact:null
     }
 
-    componentDidMount(){
+    /* componentDidMount(){
         axios.get('https://34100289-review-master-8dyme2.preview.eks.technoplus.link/api/v1/contacts')
             .then(response=>{
                 this.setState({ contacts:response.data})
                 console.log(response.data)
             })
 
+    } */
+    openNewContactModalHandler = ()=>{
+    
+        this.setState({newContactModalOpen:true})
+    }
+    
+    closeNewContactModalHandler =()=>{
+        this.setState({newContactModalOpen:false})
     }
 
-
+    openContactDetailsModalHandler =()=>{
+        
+        this.setState({contactDetailsModalOpen:true})
+    }
+    closeContactDetailsModalHandler =()=>{
+        this.setState({contactDetailsModalOpen:false})
+    }
+    getContactDetails = (id)=>{
+        const index =this.state.contacts.findIndex(c=>{
+            return c.id===id;
+        })
+        const contact = this.state.contacts[index]
+        this.setState({singleContact:contact})
+        console.log(this.state.singleContact)
+    }
 
 
     render(){
@@ -42,8 +77,7 @@ class MainContent extends Component{
                          color={classes.GreenCl}
                         hover={classes.BtnGrey}
                         mb={classes.BtnNovomb}
-                    
-                         
+                        clicked={this.openNewContactModalHandler}
                          >
                              Novo contacto
                     </Button>
@@ -76,10 +110,16 @@ class MainContent extends Component{
                     </div>
                 </Card>
                 <div className={classes.LineSeparator}></div>
-                
-                
 
+                {/* Lista de contactos*/}
+                <Contacts clicked={this.openContactDetailsModalHandler} contacts={this.state.contacts} close={this.closeContactDetailsModalHandler} show={this.state.contactDetailsModalOpen} />
+
+                {/*Modals */}
+                <Modal show={this.state.newContactModalOpen} close={this.closeNewContactModalHandler}> 
+                    <NewContact close={this.closeNewContactModalHandler} />
+                </Modal>
                 
+        
             </Auxiliar>
         )
     }

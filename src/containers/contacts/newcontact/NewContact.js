@@ -6,10 +6,21 @@ import auxclass from '../../mainContent/MainContent.module.scss';
 import Button from '../../../components/ui/button/Button';
 import { FaPlus} from "react-icons/fa";
 import classes from './NewContact.module.scss';
+import {GrFormClose} from 'react-icons/gr';
+
 class NewContact extends Component{
     render(){
         return(
             <Auxiliar>
+                <p className={auxclass.TextAlignRight}><Button 
+                        width={auxclass.CloseModalBtn} 
+                        bgColor={auxclass.GreenBg} 
+                        color={auxclass.WhiteCl}
+                        hover={auxclass.BtnGreen}
+                        clicked={this.props.close}
+                        >
+                            <GrFormClose/>
+                    </Button></p>
                 <h2 className={classes.Titulo}><span className={classes.Icon}><FaPlus/></span> Novo Contacto</h2>
                 <Form>
                     <Input inputLabel="Nome" inputType="text" width={auxclass.MediumInput}/>

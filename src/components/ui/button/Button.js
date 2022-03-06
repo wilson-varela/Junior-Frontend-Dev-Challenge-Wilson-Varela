@@ -29,12 +29,22 @@ const Button =(props)=>{
     if(props.type){
         btnTypeArray.push(props.type)
     }
-
-    return(
-        <button className={`${classes.Btn} ${classArray.join(' ')}`} type={btnTypeArray.join(' ')}>
-            {props.children}
-        </button>
-    );
+    
+    if(props.clicked){
+        return(
+            <button className={`${classes.Btn} ${classArray.join(' ')}`} type={btnTypeArray.join(' ')} onClick={props.clicked}>
+                    {props.children}</button>
+        );
+    }else{
+        return(
+            <button className={`${classes.Btn} ${classArray.join(' ')}`} type={btnTypeArray.join(' ')}>
+                    {props.children}</button>
+        );
+    }
+    
+    
+    
+   
 
 }
 export default Button;

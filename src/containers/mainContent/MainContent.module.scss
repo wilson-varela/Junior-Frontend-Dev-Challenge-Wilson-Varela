@@ -2,6 +2,9 @@
 .TextAlignCenter{
     text-align: center;
 }
+.TextAlignRight{
+    text-align: right;
+}
 
 .FloatLeft{
     float: left;
@@ -119,6 +122,11 @@
 .MediumBtn{
     width:50%;
 }
+.CloseModalBtn{
+    width:25px;
+    padding: 4px !important;
+    font-size: 12px !important;
+}
 
 .BtnFiltro{
     margin-top: 17px!important;
@@ -201,14 +209,16 @@
 
 .ContactDetailsBody{
     width:85%;
-    margin: 0 auto;
-    margin-bottom: 6px;
+    margin: 8px auto;
+    color:#666666;
+    
 }
 .ContactDetailsFooter{
     width:80%;
     background: #E4F7F1;
     padding: 4px 10px;
     margin-right: 4%;
+    color:#666666;
 }
 
 .LeftBorder{

@@ -11,15 +11,29 @@ import {FaPhoneAlt} from 'react-icons/fa';
 import {FaRegMap} from 'react-icons/fa';
 import {FaRegFileImage} from 'react-icons/fa';
 import {FaRegBookmark} from 'react-icons/fa';
-const ContactDetails =()=>{
+import {GrFormClose} from 'react-icons/gr';
+const ContactDetails =({contact, close})=>{
     return(
 
         <Auxiliar>
-            <Card  width={auxclass.MediumCard } >
+            
                     <div className={`row ${classes.ContactDetails}`}> 
+                        <div className={`col-12`}>
+                            <p className={auxclass.TextAlignRight}>
+                                <Button 
+                                    width={auxclass.CloseModalBtn} 
+                                    bgColor={auxclass.GreenBg} 
+                                    color={auxclass.WhiteCl}
+                                    hover={auxclass.BtnGreen}
+                                    clicked={close}
+                                    >
+                                        <GrFormClose/>
+                                </Button>
+                        </p>    
+                        </div>
                         <div className={`col-3 ${classes.AlignCenter}`}><img src={ContactImg} alt="profile"/></div>
                         <div className="col-9">
-                            <p className={auxclass.SemMargem}><b>Nome Completo</b></p>
+                            <p className={auxclass.SemMargem}><b>{contact.name}</b></p>
                             <p className={` ${auxclass.SemMargem} ${classes.GreyCl}`}>email@gmail.com</p>
                         </div> 
                         <div className={`col-12 ${auxclass.ContactDetailsBody} ${classes.ContactDetailsBody}`}>
@@ -43,7 +57,7 @@ const ContactDetails =()=>{
                         </div>
                     </div>
 
-            </Card>
+            
         </Auxiliar>
     )
 
