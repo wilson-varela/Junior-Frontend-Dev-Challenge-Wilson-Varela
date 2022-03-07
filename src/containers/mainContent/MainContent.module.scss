@@ -63,16 +63,18 @@
     margin-right:2%;
 }
 .ContactsCard{
-    width:48%;
+    width:49%;
 }
 
 
 .ContactsCardMargin{
     margin-right: 2%;
 }
-.ContactsCardMargin:nth-child(3n){
+
+.ContactsCardMargin:nth-child(odd){
     margin-right: 0;
 }
+
 //Inputs
 .SmallInput{
     width: 33%;
@@ -232,6 +234,13 @@
     .MediumCard{
         width:66%;
     }
+    .ContactsCardMargin:nth-child(odd){
+        margin-right: 2%;
+    }
+
+    .ContactsCardMargin:nth-child(3n){
+        margin-right: 0;
+    }
 
 
     .Ml{
@@ -243,4 +252,17 @@
 
     
 }
+
+@media (max-width:575px){
+    .ProfileImage{
+        width:25%;
+        float:left;
+    }
+    .ProfileName{
+        width:75%;
+        float:left;
+    }
+}
+
+
 

@@ -8,8 +8,8 @@ const Contact = (props) =>{
     return(
         <Card width={auxclass.ContactsCard} mr={auxclass.ContactsCardMargin}>
                     <div className={`row ${auxclass.ContactDetails}`}>
-                        <div className={`col-md-3 col-sm-2 ${auxclass.TextAlignRight}`}><img src={ContactImg} alt="profile"/></div>
-                        <div className="col-md-9 col-sm-10">
+                        <div className={`col-md-3 col-sm-2 ${auxclass.TextAlignRight} ${auxclass.ProfileImage}`}><img src={ContactImg} alt="profile"/></div>
+                        <div className={`col-md-9 col-sm-10 ${auxclass.ProfileName}`}>
                             <p className={auxclass.SemMargem}><b>{props.name}</b></p>
                             <p className={` ${auxclass.SemMargem} ${auxclass.GreyCl}`}>{props.email}</p>
                         </div>
