@@ -36,7 +36,7 @@ class MainContent extends Component{
         axios.get('/api/v1/contacts')
             .then(response=>{
                 this.setState({ contacts:response.data})
-                console.log(response.data)
+                
             })
 
     }
@@ -54,20 +54,47 @@ class MainContent extends Component{
     formSubmitHandler =(event)=>{
         event.preventDefault();
 
-        const contacts = [...this.state.contacts]
-        const newContact ={
-            id:3,
+        
+        const newContact = JSON.stringify({
             name:this.state.contact.name,
             email:this.state.contact.email,
             phone:this.state.contact.phone,
             website:this.state.contact.website,
-            company:{name:this.state.contact.company_name, type:this.state.contact.category},
-            address:{street:this.state.contact.street, city:this.state.contact.city, zipCode:this.state.contact.zip_code},
+            addressStreet:this.state.contact.street,
+            addressCity:this.state.contact.city,
+            addressZipCode:this.state.contact.zip_code,
+            companyName:this.state.contact.company_name,
+            companyType:this.state.contact.category
 
-        } 
-        contacts.push(newContact)
-        this.setState({contacts:contacts})
-        alert("Submeteu")
+        })
+        
+        const header = { headers:{
+            'content-type':'application/json',
+           
+        }}
+        
+        axios.post('/api/v1/contacts', newContact, header).then(response=>{
+            if(response.status===200){
+                this.setState({contact:{
+                    name:"",
+                    email:"",
+                    phone:"",
+                    website:"",
+                    company_name:"",
+                    category:"",
+                    street:"",
+                    city:"",
+                    zip_code:""
+                    },
+                    newContactModalOpen:false
+                })
+                console.log(response)
+            }
+           
+        }).catch(error=>{
+            console.log(error.response.data)
+        })
+        
         
 
     }
