@@ -6,7 +6,6 @@ const Modal = (props) =>{
     
     return(
         <Auxiliar>
-            <Backdrop show={props.show} clicked={props.close} />
             <div className={classes.Modal}
                 style={{
                     display: props.show ? 'block' : 'none'

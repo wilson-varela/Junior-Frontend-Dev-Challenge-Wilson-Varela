@@ -10,7 +10,7 @@ import axios from 'axios';
 import Contacts from '../contacts/Contacts';
 import Modal from '../../components/ui/modal/Modal';
 import NewContact from '../contacts/newcontact/NewContact';
-import ContactDetails from '../contacts/contactdetails/ContactDetails';
+import Backdrop from '../../components/ui/backdrop/Backdrop';
 
 class MainContent extends Component{
     
@@ -19,6 +19,7 @@ class MainContent extends Component{
         newContactModalOpen:false,
         contactDetailsModalOpen:false,
         deleteModalOpen:false,
+        showBackdrop:false,
         contact:{
         name:"",
         email:"",
@@ -70,7 +71,6 @@ class MainContent extends Component{
         
         const header = { headers:{
             'content-type':'application/json',
-           
         }}
         
         axios.post('/api/v1/contacts', newContact, header).then(response=>{
@@ -101,33 +101,29 @@ class MainContent extends Component{
 
     openNewContactModalHandler = ()=>{
     
-        this.setState({newContactModalOpen:true})
+        this.setState({newContactModalOpen:true,showBackdrop:true})
     }
     
     closeNewContactModalHandler =()=>{
-        this.setState({newContactModalOpen:false})
+        this.setState({newContactModalOpen:false,showBackdrop:false})
     }
 
     openContactDetailsModalHandler =()=>{
         
-        this.setState({contactDetailsModalOpen:true})
+        this.setState({contactDetailsModalOpen:true,showBackdrop:true})
     }
     closeContactDetailsModalHandler =()=>{
-        this.setState({contactDetailsModalOpen:false})
+        this.setState({contactDetailsModalOpen:false,showBackdrop:false})
     }
     getContactDetails = (id)=>{
-        const index =this.state.contacts.findIndex(c=>{
-            return c.id===id;
-        })
-        const contact = this.state.contacts[index]
-        this.setState({singleContact:contact})
-        console.log(this.state.singleContact)
+        
     }
 
 
     render(){
         return(
             <Auxiliar>
+                <Backdrop show={this.state.showBackdrop} />
                 {/* Card para adicionar novo contacto*/}
                 <Card style = {classes.GreenBg} width={classes.SmallCard} mr={classes.Mr} tAlign={classes.TextAlignCenter}>
                     <span className={classes.Icon}><FaPlusSquare/></span>
@@ -154,7 +150,7 @@ class MainContent extends Component{
                             <p className={`${classes.Titulo} ${classes.Bold}`}>Contactos <span className={classes.GreenCl}>Adicionados</span></p>
                             <p className={`${classes.SimpleText}`}>Uma plataforma especializada na prospecção de novos clientes para o seu negócio.</p>
                         </div>
-                        <div className={`col-12 ${classes.FiltroDiv}`}>
+                        <div className={`col-12 `}>
                             <p className={classes.Separador}></p>
                             <Input width={classes.SmallInput} inputLabel="Nome" inputType="text"/>
                             <Input width={classes.SmallInput} inputLabel="Categorias" inputType="text"/>
