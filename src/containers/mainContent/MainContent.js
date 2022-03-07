@@ -15,15 +15,7 @@ import ContactDetails from '../contacts/contactdetails/ContactDetails';
 class MainContent extends Component{
     
     state = {
-        contacts:[{"id":1,"name":"Leanne Graham","email":"Sincere@april.biz",
-        "phone":"1-770-736-8031 x56442","website":"hildegard.org",
-        "company":{"name":"Romaguera-Crona","type":"harness real-time e-market"},
-        "address":{"street":"Kulas Light","city":"Gwenborough","zipCode":"92998-3874"}},
-        {"id":2,"name":"Pedro Borges","email":"Sincere@april.biz",
-        "phone":"1-770-736-8031 x56442","website":"hildegard.org",
-        "company":{"name":"Romaguera-Crona","type":"harness real-time e-market"},
-        "address":{"street":"Kulas Light","city":"Gwenborough","zipCode":"92998-3874"}}
-    ],
+        contacts:[],
         newContactModalOpen:false,
         contactDetailsModalOpen:false,
         deleteModalOpen:false,
@@ -40,14 +32,14 @@ class MainContent extends Component{
         }
     }
 
-    /* componentDidMount(){
-        axios.get('https://34100289-review-master-8dyme2.preview.eks.technoplus.link/api/v1/contacts')
+    componentDidMount(){
+        axios.get('/api/v1/contacts')
             .then(response=>{
                 this.setState({ contacts:response.data})
                 console.log(response.data)
             })
 
-    } */
+    }
 
     formOnChangeHandler=(event)=>{
         console.log(event.target.value)

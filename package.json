@@ -15,6 +15,7 @@
     "sass": "^1.49.9",
     "web-vitals": "^2.1.4"
   },
+  "proxy":"https://34100289-review-master-8dyme2.preview.eks.technoplus.link",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
