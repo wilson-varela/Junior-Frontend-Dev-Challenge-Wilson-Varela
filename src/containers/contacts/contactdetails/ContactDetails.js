@@ -12,7 +12,7 @@ import {FaRegMap} from 'react-icons/fa';
 import {FaRegFileImage} from 'react-icons/fa';
 import {FaRegBookmark} from 'react-icons/fa';
 import {GrFormClose} from 'react-icons/gr';
-const ContactDetails =({contact, close})=>{
+const ContactDetails =(props)=>{
     return(
 
         <Auxiliar>
@@ -25,7 +25,7 @@ const ContactDetails =({contact, close})=>{
                                     bgColor={auxclass.GreenBg} 
                                     color={auxclass.WhiteCl}
                                     hover={auxclass.BtnGreen}
-                                    clicked={close}
+                                    clicked={props.close}
                                     >
                                         <GrFormClose/>
                                 </Button>
@@ -33,8 +33,8 @@ const ContactDetails =({contact, close})=>{
                         </div>
                         <div className={`col-3 ${classes.AlignCenter}`}><img src={ContactImg} alt="profile"/></div>
                         <div className="col-9">
-                            <p className={auxclass.SemMargem}><b>{contact.name}</b></p>
-                            <p className={` ${auxclass.SemMargem} ${classes.GreyCl}`}>email@gmail.com</p>
+                            <p className={auxclass.SemMargem}><b>{props.contact.name}</b></p>
+                            <p className={` ${auxclass.SemMargem} ${classes.GreyCl}`}>{props.contact.email}</p>
                         </div> 
                         <div className={`col-12 ${auxclass.ContactDetailsBody} ${classes.ContactDetailsBody}`}>
                             <p ><span className={classes.Icon}><FaHome/></span>xxxxx</p>

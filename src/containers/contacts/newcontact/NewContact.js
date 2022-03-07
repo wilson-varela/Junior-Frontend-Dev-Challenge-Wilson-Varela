@@ -22,23 +22,23 @@ class NewContact extends Component{
                             <GrFormClose/>
                     </Button></p>
                 <h2 className={classes.Titulo}><span className={classes.Icon}><FaPlus/></span> Novo Contacto</h2>
-                <Form>
-                    <Input inputLabel="Nome" inputType="text" width={auxclass.MediumInput}/>
-                    <Input inputLabel="Email" inputType="text" width={auxclass.MediumInput}/>
-                    <Input inputLabel="Telefone" inputType="text" width={auxclass.MediumInput}/>
-                    <Input inputLabel="Website" inputType="text" width={auxclass.MediumInput}/>
-                    <Input inputLabel="Nome da empresa" inputType="text" width={auxclass.MediumInput}/>
-                    <Input inputLabel="Categorias" inputType="text" width={auxclass.MediumInput}/>
-                    <Input inputLabel="Rua" inputType="text" width={auxclass.MediumInput}/>
-                    <Input inputLabel="Cidade" inputType="text" width={auxclass.MediumInput}/>
-                    <Input inputLabel="Código Postal" inputType="number" width={auxclass.MediumInput}/>
+                <Form  >
+                    <Input inputLabel="Nome" inputName="name" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.name} change={this.props.change}/>
+                    <Input inputLabel="Email" inputName="email" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.email} change={this.props.change}/>
+                    <Input inputLabel="Telefone" inputName="phone" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.phone} change={this.props.change}/>
+                    <Input inputLabel="Website" inputName="website" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.website} change={this.props.change}/>
+                    <Input inputLabel="Nome da empresa" inputName="company_name" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.company_name} change={this.props.change}/>
+                    <Input inputLabel="Categorias" inputName="category" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.category} change={this.props.change}/>
+                    <Input inputLabel="Rua" inputName="street" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.street} change={this.props.change}/>
+                    <Input inputLabel="Cidade" inputName="city" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.city} change={this.props.change}/>
+                    <Input inputLabel="Código Postal" inputName="zip_code" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.zip_code} change={this.props.change}/>
                     <div className={classes.StoreButtonRow}>
                         <Button 
                             width={auxclass.SmallBtn}
                             bgColor={auxclass.GreenBg} 
                             color={auxclass.WhiteCl}
                             hover={auxclass.BtnGreen}
-                            type="submit"
+                            clicked={this.props.submit}
                         >
                             Gravar Contacto
                         </Button>

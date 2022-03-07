@@ -19,7 +19,7 @@ class MainContent extends Component{
         "phone":"1-770-736-8031 x56442","website":"hildegard.org",
         "company":{"name":"Romaguera-Crona","type":"harness real-time e-market"},
         "address":{"street":"Kulas Light","city":"Gwenborough","zipCode":"92998-3874"}},
-        {"id":2,"name":"Adolfo Ricardo","email":"Sincere@april.biz",
+        {"id":2,"name":"Pedro Borges","email":"Sincere@april.biz",
         "phone":"1-770-736-8031 x56442","website":"hildegard.org",
         "company":{"name":"Romaguera-Crona","type":"harness real-time e-market"},
         "address":{"street":"Kulas Light","city":"Gwenborough","zipCode":"92998-3874"}}
@@ -27,7 +27,17 @@ class MainContent extends Component{
         newContactModalOpen:false,
         contactDetailsModalOpen:false,
         deleteModalOpen:false,
-        singleContact:null
+        contact:{
+        name:"",
+        email:"",
+        phone:"",
+        website:"",
+        company_name:"",
+        category:"",
+        street:"",
+        city:"",
+        zip_code:""
+        }
     }
 
     /* componentDidMount(){
@@ -38,6 +48,38 @@ class MainContent extends Component{
             })
 
     } */
+
+    formOnChangeHandler=(event)=>{
+        console.log(event.target.value)
+        const name = event.target.name;
+        const value = event.target.value;
+
+        this.setState({contact:{
+            ...this.state.contact,
+            [name]: value
+        }})
+    }
+    formSubmitHandler =(event)=>{
+        event.preventDefault();
+
+        const contacts = [...this.state.contacts]
+        const newContact ={
+            id:3,
+            name:this.state.contact.name,
+            email:this.state.contact.email,
+            phone:this.state.contact.phone,
+            website:this.state.contact.website,
+            company:{name:this.state.contact.company_name, type:this.state.contact.category},
+            address:{street:this.state.contact.street, city:this.state.contact.city, zipCode:this.state.contact.zip_code},
+
+        } 
+        contacts.push(newContact)
+        this.setState({contacts:contacts})
+        alert("Submeteu")
+        
+
+    }
+
     openNewContactModalHandler = ()=>{
     
         this.setState({newContactModalOpen:true})
@@ -112,11 +154,15 @@ class MainContent extends Component{
                 <div className={classes.LineSeparator}></div>
 
                 {/* Lista de contactos*/}
-                <Contacts clicked={this.openContactDetailsModalHandler} contacts={this.state.contacts} close={this.closeContactDetailsModalHandler} show={this.state.contactDetailsModalOpen} />
+                <Contacts 
+                    clicked={this.openContactDetailsModalHandler} 
+                    contacts={this.state.contacts} 
+                    close={this.closeContactDetailsModalHandler} 
+                    show={this.state.contactDetailsModalOpen} />
 
                 {/*Modals */}
                 <Modal show={this.state.newContactModalOpen} close={this.closeNewContactModalHandler}> 
-                    <NewContact close={this.closeNewContactModalHandler} />
+                    <NewContact contact={this.state.contact} change={this.formOnChangeHandler} submit={this.formSubmitHandler} close={this.closeNewContactModalHandler} />
                 </Modal>
                 
         

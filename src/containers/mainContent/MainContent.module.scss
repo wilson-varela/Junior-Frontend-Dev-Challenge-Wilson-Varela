@@ -51,7 +51,7 @@
     font-weight: 600;
 }
 //Cards
-.SmallCard, .MediumCard, .LargeCard, .ExtraSmallCard{
+.SmallCard, .MediumCard, .LargeCard, .ExtraSmallCard, .ContactsCard{
     width:100%;
     padding: 5px 8px;
     float:left;
@@ -62,7 +62,17 @@
     width: 48%;
     margin-right:2%;
 }
+.ContactsCard{
+    width:48%;
+}
 
+
+.ContactsCardMargin{
+    margin-right: 2%;
+}
+.ContactsCardMargin:nth-child(3n){
+    margin-right: 0;
+}
 //Inputs
 .SmallInput{
     width: 33%;
@@ -81,34 +91,6 @@
 
 
 
-@media (min-width:768px) {
-    .ExtraSmallCard{
-        width: 23%;
-        margin-right: 2%;
-    }
-    .ExtraSmallCard:nth-child(4n){
-        margin-right: 0;
-    }
-    .SmallCard{
-        width:32%;
-    }
-    .MediumCard{
-        width:66%;
-    }
-
-
-    .Ml{
-        margin-left: 2%;
-    }
-    .Mr{
-        margin-right: 2%;
-    }
-
-    
-
-    
-    
-}
 
 //Buttons
 .ExtraSmallBtn{
@@ -120,7 +102,7 @@
     width:30%;
 }
 .MediumBtn{
-    width:50%;
+    width:60%;
 }
 .CloseModalBtn{
     width:25px;
@@ -231,3 +213,34 @@
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
 }
+
+
+
+//Responsividade
+
+@media (min-width:768px) {
+    .ExtraSmallCard{
+        width: 23%;
+        margin-right: 2%;
+    }
+    .ExtraSmallCard:nth-child(4n){
+        margin-right: 0;
+    }
+    .SmallCard, .ContactsCard{
+        width:32%;
+    }
+    .MediumCard{
+        width:66%;
+    }
+
+
+    .Ml{
+        margin-left: 2%;
+    }
+    .Mr{
+        margin-right: 2%;
+    }
+
+    
+}
+

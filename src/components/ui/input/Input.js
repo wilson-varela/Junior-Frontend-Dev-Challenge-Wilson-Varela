@@ -5,7 +5,7 @@ const Input = (props) =>{
         <div className={`${classes.InputDiv} ${props.width}`}>
             <label>{props.inputLabel}</label>
             <span className={classes.LeftBorder}></span>
-            <input type={props.inputType} />
+            <input type={props.inputType} name={props.inputName} value={props.inputValue} onChange={props.change}/>
 
         </div>
     )

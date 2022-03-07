@@ -6,10 +6,10 @@ import ContactImg from '../../../assets/images/contact.jpg';
 import Button from '../../../components/ui/button/Button';
 const Contact = (props) =>{
     return(
-        <Card width={auxclass.SmallCard} mr={auxclass.Mr}>
+        <Card width={auxclass.ContactsCard} mr={auxclass.ContactsCardMargin}>
                     <div className={`row ${auxclass.ContactDetails}`}>
-                        <div className="col-3"><img src={ContactImg} alt="profile"/></div>
-                        <div className="col-9">
+                        <div className={`col-md-3 col-sm-2 ${auxclass.TextAlignRight}`}><img src={ContactImg} alt="profile"/></div>
+                        <div className="col-md-9 col-sm-10">
                             <p className={auxclass.SemMargem}><b>{props.name}</b></p>
                             <p className={` ${auxclass.SemMargem} ${auxclass.GreyCl}`}>{props.email}</p>
                         </div>
