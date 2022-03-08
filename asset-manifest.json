@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Junior-Frontend-Dev-Challenge-Wilson-Varela/static/css/main.50ef5dac.css",
+    "main.js": "/Junior-Frontend-Dev-Challenge-Wilson-Varela/static/js/main.a225b6cc.js",
+    "static/js/787.403d856c.chunk.js": "/Junior-Frontend-Dev-Challenge-Wilson-Varela/static/js/787.403d856c.chunk.js",
+    "static/media/right-sidebar.png": "/Junior-Frontend-Dev-Challenge-Wilson-Varela/static/media/right-sidebar.a3ef45688e9ca6365d35.png",
+    "static/media/contact.jpg": "/Junior-Frontend-Dev-Challenge-Wilson-Varela/static/media/contact.a26c5c549d1be5ff8506.jpg",
+    "index.html": "/Junior-Frontend-Dev-Challenge-Wilson-Varela/index.html",
+    "main.50ef5dac.css.map": "/Junior-Frontend-Dev-Challenge-Wilson-Varela/static/css/main.50ef5dac.css.map",
+    "main.a225b6cc.js.map": "/Junior-Frontend-Dev-Challenge-Wilson-Varela/static/js/main.a225b6cc.js.map",
+    "787.403d856c.chunk.js.map": "/Junior-Frontend-Dev-Challenge-Wilson-Varela/static/js/787.403d856c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50ef5dac.css",
+    "static/js/main.a225b6cc.js"
+  ]
+}
