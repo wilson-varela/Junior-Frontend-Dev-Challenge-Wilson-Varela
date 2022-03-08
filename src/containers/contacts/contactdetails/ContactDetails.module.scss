@@ -22,6 +22,8 @@
 }
 .Icon{
     margin-right: 12px;
+    width:5%;
+    float:left;
 }
 
 .AlignCenter{
@@ -29,4 +31,19 @@
 }
 .GreyCl{
     color:#ACACAD;
+}
+
+.TypeList{
+    list-style: none;
+    width: 85%;
+    float: left;
+    padding: 0;
+}
+.TypeList li{
+    width: auto;
+    padding: 0 4px;
+    float: left;
+    text-align: center;
+    background: #A8FFE0;
+    margin-right: 4px;
 }

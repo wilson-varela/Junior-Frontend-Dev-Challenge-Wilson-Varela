@@ -12,8 +12,13 @@ import {FaRegFileImage} from 'react-icons/fa';
 import {FaRegBookmark} from 'react-icons/fa';
 import {GrFormClose} from 'react-icons/gr';
 const ContactDetails =(props)=>{
-    return(
+    const companyType = props.contact.company.type.split(" ").map(c=>{
+        return(<li>{c}</li>)
+    })
 
+    
+    return(
+       
         <Auxiliar>
             
                     <div className={`row ${classes.ContactDetails}`}> 
@@ -40,7 +45,7 @@ const ContactDetails =(props)=>{
                             <p ><span className={classes.Icon}><FaPhoneAlt/></span>{props.contact.phone}</p>
                             <p ><span className={classes.Icon}><FaRegMap/></span>{`${props.contact.address.street},${props.contact.address.city}`}</p>
                             <p ><span className={classes.Icon}><FaRegFileImage/></span>{props.contact.address.zipCode}</p>
-                            <p ><span className={classes.Icon}><FaRegBookmark/></span>{props.contact.company.type}</p>
+                            <p ><span className={classes.Icon}><FaRegBookmark/></span> <ul className={classes.TypeList}>{companyType}</ul></p>
                         </div>
                         <div className={`col-12 ${classes.ContactDetailsFooter}`}>
             
