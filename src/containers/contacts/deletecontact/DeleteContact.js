@@ -34,7 +34,7 @@ const DeleteContact =(props)=>{
                                 color={auxclass.WhiteCl}
                                 hover={auxclass.BtnRed}
                                 id={props.id}
-                                clicked={props.delete}
+                                clicked={props.clicked}
                                 >
                                     Sim, apagar
                             </Button>

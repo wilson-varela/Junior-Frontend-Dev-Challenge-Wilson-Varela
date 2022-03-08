@@ -36,13 +36,17 @@ class MainContent extends Component{
     }
 
     componentDidMount(){
+        this.getContacts()
+  
+    }
+
+     getContacts =()=>{
         axios.get('/api/v1/contacts')
             .then(response=>{
                 this.setState({ contacts:response.data})
                 
             })
-           
-    }
+     }
 
     formOnChangeHandler=(event)=>{
         console.log(event.target.value)
@@ -81,10 +85,10 @@ class MainContent extends Component{
                     name:"", email:"", phone:"", website:"", company_name:"", category:"", street:"", city:"", zip_code:""
                     },
                     newContactModalOpen:false,
-                    showBackdrop:false,
-                    contacts: this.state.contacts.concat(response.data)
+                    showBackdrop:false
                 })
-                console.log(response)
+                this.getContacts()
+               
             }
            
         }).catch(error=>{
@@ -106,38 +110,45 @@ class MainContent extends Component{
 
     openContactDetailsModalHandler =(event)=>{
         event.preventDefault();
-        
-        console.log(event.currentTarget.id)
-        
-        
+
         const header = { headers:{
             'content-type':'application/json',
         }}
         axios.get(`/api/v1/contacts/${event.currentTarget.id}`, header).then(response=>{
             this.setState({singleContact:response.data, contactDetailsModalOpen:true,showBackdrop:true})
-            console.log(response.data)
+            
         }).catch(error=>{
             console.log(error.response.data)
         })
-        
-        
+
     }
+
     closeContactDetailsModalHandler =()=>{
         this.setState({contactDetailsModalOpen:false,showBackdrop:false})
     }
     
-    openDeleteModalHandler = (event)=>{
-    
-        this.setState({contactDetailsModalOpen:false, deleteModalOpen:true })
-
+    deleteContact = (event) =>{
+         
         const header = { headers:{
             'content-type':'application/json',
         }}
+        
         axios.delete(`/api/v1/contacts/${event.currentTarget.id}`,header).then(response=>{
-            console.log(response)
+            if(response.status===204){
+                this.setState({deleteModalOpen:false, showBackdrop:false})
+                this.getContacts()
+            }
+            
         }).catch(error=>{
             console.log(error.response.data)
-        })
+        }) 
+        
+    }
+
+    openDeleteModalHandler = (event)=>{
+    
+        this.setState({contactDetailsModalOpen:false, deleteModalOpen:true })
+        
     }
     
     closeDeleteModalHandler =()=>{
@@ -210,7 +221,7 @@ class MainContent extends Component{
                 </Modal> }
                 
                 {this.state.deleteModalOpen && <Modal show={this.state.deleteModalOpen}>
-                    <DeleteContact delete = {this.openDeleteModalHandler} close={this.closeDeleteModalHandler}/></Modal>}
+                    <DeleteContact clicked={this.deleteContact} id={this.state.singleContact.id} delete = {this.openDeleteModalHandler} close={this.closeDeleteModalHandler}/></Modal>}
             </Auxiliar>
         )
     }
