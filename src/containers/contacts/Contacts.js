@@ -4,6 +4,7 @@ import Modal from '../../components/ui/modal/Modal';
 import ContactDetails from './contactdetails/ContactDetails';
 const Contacts = (props) =>{
     return(
+        
         props.contacts.map((contact,index)=>{
             return(
                 <Contact
@@ -18,11 +19,10 @@ const Contacts = (props) =>{
                     clicked={props.clicked}
                     
                 />
-                    
-                    
-               
+
             )
         })
+        
     );
 } 
 export default Contacts;

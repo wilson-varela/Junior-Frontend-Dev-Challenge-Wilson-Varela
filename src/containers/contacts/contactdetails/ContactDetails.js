@@ -1,7 +1,6 @@
 import React from 'react';
 import Auxiliar from '../../auxiliar/Auxiliar';
 import auxclass from '../../mainContent/MainContent.module.scss';
-import Card from '../../../components/ui/cards/Card';
 import ContactImg from '../../../assets/images/contact.jpg';
 import classes from './ContactDetails.module.scss';
 import Button from '../../../components/ui/button/Button';

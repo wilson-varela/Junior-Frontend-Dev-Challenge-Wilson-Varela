@@ -13,8 +13,11 @@ import NewContact from '../contacts/newcontact/NewContact';
 import Backdrop from '../../components/ui/backdrop/Backdrop';
 import ContactDetails from '../contacts/contactdetails/ContactDetails';
 import DeleteContact from '../contacts/deletecontact/DeleteContact';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class MainContent extends Component{
-    
+  
     state = {
         contacts:[],
         newContactModalOpen:false,
@@ -87,12 +90,17 @@ class MainContent extends Component{
                     newContactModalOpen:false,
                     showBackdrop:false
                 })
+                toast.success('Gravado com sucesso.')
                 this.getContacts()
                
             }
            
         }).catch(error=>{
-            console.log(error.response.data)
+            if(error){
+               toast.warn('Erro ao gravar.') 
+                console.log(error.response.data)
+            }
+            
         })
         
         
@@ -136,11 +144,16 @@ class MainContent extends Component{
         axios.delete(`/api/v1/contacts/${event.currentTarget.id}`,header).then(response=>{
             if(response.status===204){
                 this.setState({deleteModalOpen:false, showBackdrop:false})
+                toast.success('Removido com sucesso.')
                 this.getContacts()
             }
             
         }).catch(error=>{
-            console.log(error.response.data)
+            if(error){
+                toast.success('Erro ao apagar.')
+                console.log(error.response.data)
+            }
+            
         }) 
         
     }
@@ -159,6 +172,7 @@ class MainContent extends Component{
     render(){
         return(
             <Auxiliar>
+                
                 <Backdrop show={this.state.showBackdrop} />
                 {/* Card para adicionar novo contacto*/}
                 <Card style = {classes.GreenBg} width={classes.SmallCard} mr={classes.Mr} tAlign={classes.TextAlignCenter}>
@@ -222,6 +236,17 @@ class MainContent extends Component{
                 
                 {this.state.deleteModalOpen && <Modal show={this.state.deleteModalOpen}>
                     <DeleteContact clicked={this.deleteContact} id={this.state.singleContact.id} delete = {this.openDeleteModalHandler} close={this.closeDeleteModalHandler}/></Modal>}
+                    <ToastContainer 
+                    position="top-right"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss={false}
+                    draggable={false}
+                    pauseOnHover={false}/>
+
             </Auxiliar>
         )
     }

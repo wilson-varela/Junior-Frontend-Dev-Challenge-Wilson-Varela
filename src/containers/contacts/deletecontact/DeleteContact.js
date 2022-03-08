@@ -2,7 +2,7 @@ import React from 'react';
 import Auxiliar from '../../auxiliar/Auxiliar';
 import Button from '../../../components/ui/button/Button';
 import auxclass from '../../mainContent/MainContent.module.scss';
-import Card from '../../../components/ui/cards/Card';
+
 import {FaRegWindowClose} from 'react-icons/fa';
 import classes from './DeleteCard.module.scss';
 
