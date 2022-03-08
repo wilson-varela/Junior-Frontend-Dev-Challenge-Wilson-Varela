@@ -98,7 +98,7 @@
 .ExtraSmallBtn{
     width: 15%;
     padding: 4px !important;
-    font-size: 12px !important;
+    font-size: 0.75rem !important;
 }
 .SmallBtn{
     width:30%;
@@ -109,12 +109,12 @@
 .CloseModalBtn{
     width:25px;
     padding: 4px !important;
-    font-size: 12px !important;
+    font-size: 0.75rem !important;
 }
 
 .BtnFiltro{
     margin-top: 17px!important;
-    font-size: 12.8px;
+    font-size: 0.8rem;
 }
 
 .BtnGrey:hover{
@@ -150,21 +150,21 @@
 //
 .NrContactos{
     font-family: 'Roboto',sans-serif;
-    font-size: 45px;
+    font-size: 2.8125rem;
     font-weight: 700;
     color:#22C28A;
     text-align: center;
 }
 
 .Titulo{
-    font-size: 26px;
+    font-size: 1.625rem;
     margin-bottom: 0;
     margin-top: 3px;
 }
 
 .SimpleText{
     margin: 0;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .SemMargem{
     margin:0;
@@ -185,7 +185,7 @@
 }
 //Card detalhes do contacto
 .ContactDetails{
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .ContactDetails img{
     border-radius: 50%;
@@ -263,6 +263,60 @@
         float:left;
     }
 }
+@media (max-width: 471px){
+    .NrContactos{
+        font-size: 6vw;
+        padding-top: 2px;
+    }
+    
+
+    .Titulo{
+        font-size:4vw;
+    }
+
+    .ContactDetails{
+        font-size: 2vw;
+    }
+    .LeftBorder{
+        height: 5.5vw;
+    }
+    .ExtraSmallBtn{
+        font-size: 2vw!important;
+    }
+    .ProfileImage, .ProfileName  
+    {
+        width:100%;
+        text-align: center;
+    }
+    .ProfileImage img{
+        width:8vw;
+    }    
+    .SimpleText{
+        font-size: 2.4vw;
+    }
+    .AddContact p{
+        font-size: 3vw!important;
+    }
+    .AddContact .Icon svg{
+        height: 7vw;
+        
+        
+    }
+    .AddContact button{
+        font-size: 2vw;
+    }
+}
+@media(max-width:275px){
+    .NrContactos{
+        font-size: 3vw;
+        
+    }
+}
 
 
 
+@media (max-width:300px){
+    .MediumInput{
+        width:100%;
+    }
+}

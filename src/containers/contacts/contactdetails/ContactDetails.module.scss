@@ -18,7 +18,7 @@
 }
 
 .ContactDetailsFooter svg{
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 .Icon{
     margin-right: 12px;
@@ -46,4 +46,21 @@
     text-align: center;
     background: #A8FFE0;
     margin-right: 4px;
+}
+.FullWidth{
+    width:100%;
+}
+
+
+@media (max-width:400px){
+    .ProfilePic{
+        width:100%;
+        float:left;
+        text-align: center;
+    }
+    .Name{
+        width:100%;
+        float:left;
+        text-align: center;
+    }
 }

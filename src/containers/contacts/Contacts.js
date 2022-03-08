@@ -1,7 +1,6 @@
 import React from 'react';
 import Contact from './contact/Contact';
-import Modal from '../../components/ui/modal/Modal';
-import ContactDetails from './contactdetails/ContactDetails';
+
 const Contacts = (props) =>{
     return(
         

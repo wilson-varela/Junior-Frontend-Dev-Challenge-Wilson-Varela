@@ -22,7 +22,7 @@ class NewContact extends Component{
                             <GrFormClose/>
                     </Button></p>
                 <h2 className={classes.Titulo}><span className={classes.Icon}><FaPlus/></span> Novo Contacto</h2>
-                <Form  >
+                <Form  className={classes.FormContact}>
                     <Input inputLabel="Nome" inputName="name" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.name} change={this.props.change}/>
                     <Input inputLabel="Email" inputName="email" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.email} change={this.props.change}/>
                     <Input inputLabel="Telefone" inputName="phone" inputType="text" width={auxclass.MediumInput} inputValue={this.props.contact.phone} change={this.props.change}/>

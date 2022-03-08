@@ -13,7 +13,7 @@ import {FaRegBookmark} from 'react-icons/fa';
 import {GrFormClose} from 'react-icons/gr';
 const ContactDetails =(props)=>{
     const companyType = props.contact.company.type.split(" ").map(c=>{
-        return(<li>{c}</li>)
+        return(<li key={c}>{c}</li>)
     })
 
     
@@ -35,8 +35,8 @@ const ContactDetails =(props)=>{
                                 </Button>
                         </p>    
                         </div>
-                        <div className={`col-3 ${classes.AlignCenter}`}><img src={ContactImg} alt="profile"/></div>
-                        <div className="col-9">
+                        <div className={`col-3 ${classes.AlignCenter} ${classes.ProfilePic}`}><img src={ContactImg} alt="profile"/></div>
+                        <div className={`col-9 ${classes.Name}`}>
                             <p className={auxclass.SemMargem}><b>{props.contact.name}</b></p>
                             <p className={` ${auxclass.SemMargem} ${classes.GreyCl}`}>{props.contact.email}</p>
                         </div> 
@@ -45,7 +45,8 @@ const ContactDetails =(props)=>{
                             <p ><span className={classes.Icon}><FaPhoneAlt/></span>{props.contact.phone}</p>
                             <p ><span className={classes.Icon}><FaRegMap/></span>{`${props.contact.address.street},${props.contact.address.city}`}</p>
                             <p ><span className={classes.Icon}><FaRegFileImage/></span>{props.contact.address.zipCode}</p>
-                            <p ><span className={classes.Icon}><FaRegBookmark/></span> <ul className={classes.TypeList}>{companyType}</ul></p>
+                            <div className={classes.FullWidth}><span className={classes.Icon}><FaRegBookmark/></span><ul className={classes.TypeList}>{companyType}</ul></div>
+                            
                         </div>
                         <div className={`col-12 ${classes.ContactDetailsFooter}`}>
             

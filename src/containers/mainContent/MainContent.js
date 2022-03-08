@@ -35,6 +35,10 @@ class MainContent extends Component{
         street:"",
         city:"",
         zip_code:""
+        },
+        search:{
+            name:"",
+            category:""
         }
     }
 
@@ -43,6 +47,7 @@ class MainContent extends Component{
   
     }
 
+     /* pega os contactos da api */
      getContacts =()=>{
         axios.get('/api/v1/contacts')
             .then(response=>{
@@ -51,8 +56,9 @@ class MainContent extends Component{
             })
      }
 
+     /* pega valores dos inputs do formulario novo contacto*/
     formOnChangeHandler=(event)=>{
-        console.log(event.target.value)
+        
         const name = event.target.name;
         const value = event.target.value;
 
@@ -61,6 +67,7 @@ class MainContent extends Component{
             [name]: value
         }})
     }
+    /* Envia o novo contacto ao servidor*/
     formSubmitHandler =(event)=>{
         event.preventDefault();
 
@@ -98,7 +105,7 @@ class MainContent extends Component{
         }).catch(error=>{
             if(error){
                toast.warn('Erro ao gravar.') 
-                console.log(error.response.data)
+                
             }
             
         })
@@ -107,6 +114,7 @@ class MainContent extends Component{
 
     }
 
+    
     openNewContactModalHandler = ()=>{
     
         this.setState({newContactModalOpen:true,showBackdrop:true})
@@ -126,7 +134,8 @@ class MainContent extends Component{
             this.setState({singleContact:response.data, contactDetailsModalOpen:true,showBackdrop:true})
             
         }).catch(error=>{
-            console.log(error.response.data)
+            if(error){toast.warn("Erro ao carregar contacto.")}
+           
         })
 
     }
@@ -151,7 +160,7 @@ class MainContent extends Component{
         }).catch(error=>{
             if(error){
                 toast.success('Erro ao apagar.')
-                console.log(error.response.data)
+                
             }
             
         }) 
@@ -168,6 +177,63 @@ class MainContent extends Component{
         this.setState({deleteModalOpen:false,showBackdrop:false})
     }
 
+    searchOnChangeHandler =(event)=>{
+        const name = event.target.name;
+        const value = event.target.value;
+
+        this.setState({search:{
+            ...this.state.search,
+            [name]: value
+        }})
+    }
+    searchSubmitHandler = ()=>{
+        
+        
+
+        if(!this.state.search.name.trim()===""){
+            const name = JSON.stringify({name:this.state.search.name})
+
+            axios.get(`/api/v1/contacts/`, name).then(response=>{
+                if(response.status===200){
+                    this.setState({contacts:response.data})
+                }
+            }).catch(error=>{
+                if(error){
+                    toast.warn("Erro na pesquisa.")
+                }
+            })
+        }
+
+        if(!this.state.search.category.trim()===""){
+            const category= JSON.stringify({companyType:this.state.search.category})
+            axios.get(`/api/v1/contacts/`, category).then(response=>{
+                if(response.status===200){
+                    this.setState({contacts:response.data})
+                }
+            }).catch(error=>{
+                if(error){
+                    toast.warn("Erro na pesquisa.")
+                }
+            })
+        }
+
+        if(!this.state.search.name.trim()==="" && !this.state.search.category.trim()===""){
+            const data=JSON.stringify({
+                name:this.state.search.name,
+                companyType:this.state.search.category
+            })
+            axios.get(`/api/v1/contacts/`, data).then(response=>{
+                this.setState({contacts:response.data})
+            }).catch(error=>{
+                if(error){
+                    toast.warn("Erro na pesquisa.")
+                }
+            })
+        }
+
+
+        
+    }
 
     render(){
         return(
@@ -176,25 +242,27 @@ class MainContent extends Component{
                 <Backdrop show={this.state.showBackdrop} />
                 {/* Card para adicionar novo contacto*/}
                 <Card style = {classes.GreenBg} width={classes.SmallCard} mr={classes.Mr} tAlign={classes.TextAlignCenter}>
-                    <span className={classes.Icon}><FaPlusSquare/></span>
-                    <p className={`${classes.WhiteCl} ${classes.Bold}`}>Adicionar Contacto</p>
-                    <Button 
-                        width={classes.MediumBtn}
-                         bgColor={classes.WhiteBg} 
-                         color={classes.GreenCl}
-                        hover={classes.BtnGrey}
-                        mb={classes.BtnNovomb}
-                        clicked={this.openNewContactModalHandler}
-                         >
-                             Novo contacto
-                    </Button>
+                    <div className={classes.AddContact}>
+                        <span className={classes.Icon}><FaPlusSquare/></span>
+                        <p className={`${classes.WhiteCl} ${classes.Bold}`}>Adicionar Contacto</p>
+                        <Button 
+                            width={classes.MediumBtn}
+                            bgColor={classes.WhiteBg} 
+                            color={classes.GreenCl}
+                            hover={classes.BtnGrey}
+                            mb={classes.BtnNovomb}
+                            clicked={this.openNewContactModalHandler}
+                            >
+                                Novo contacto
+                        </Button>
+                    </div>
                 </Card>
 
                  {/* Card do filtro*/}
                 <Card  width={classes.MediumCard } >
                     <div className='row'> 
-                        <div className={`col-2 ${classes.TextAlignCenter}`}>
-                            <span className={classes.NrContactos}>45</span>
+                        <div className={`col-2 ${classes.TextAlignCenter} ${classes.NrContactos}`}>
+                            {this.state.contacts.length}
                         </div>
                         <div className='col-10'>
                             <p className={`${classes.Titulo} ${classes.Bold}`}>Contactos <span className={classes.GreenCl}>Adicionados</span></p>
@@ -202,14 +270,15 @@ class MainContent extends Component{
                         </div>
                         <div className={`col-12 `}>
                             <p className={classes.Separador}></p>
-                            <Input width={classes.SmallInput} inputLabel="Nome" inputType="text"/>
-                            <Input width={classes.SmallInput} inputLabel="Categorias" inputType="text"/>
+                            <Input width={classes.SmallInput} inputLabel="Nome" inputName="name" inputType="text" inputValue={this.state.search.name} change={this.searchOnChangeHandler} />
+                            <Input width={classes.SmallInput} inputLabel="Categorias" inputName="category" inputType="text" inputValue={this.state.search.category} change={this.searchOnChangeHandler}/>
                             <Button 
                                 width={classes.SmallBtn}
                                 bgColor={classes.GreenBg} 
                                 color={classes.WhiteCl}
                                 hover={classes.BtnGreen}
                                 btnFiltro={classes.BtnFiltro}
+                                clicked={this.searchSubmitHandler}
                                 >
                                     <FaSearch/>
                             </Button>
@@ -226,7 +295,7 @@ class MainContent extends Component{
                     close={this.closeContactDetailsModalHandler} 
                     show={this.state.contactDetailsModalOpen} />
 
-                {/*Modals */}
+                
                 <Modal show={this.state.newContactModalOpen} close={this.closeNewContactModalHandler}> 
                     <NewContact contact={this.state.contact} change={this.formOnChangeHandler} submit={this.formSubmitHandler} close={this.closeNewContactModalHandler} />
                 </Modal>
@@ -234,18 +303,22 @@ class MainContent extends Component{
                        <ContactDetails  showDelete={this.openDeleteModalHandler} contact={this.state.singleContact} close={this.closeContactDetailsModalHandler}/> 
                 </Modal> }
                 
+                {/*Mostrar o delete modal se o valor for true */}
                 {this.state.deleteModalOpen && <Modal show={this.state.deleteModalOpen}>
-                    <DeleteContact clicked={this.deleteContact} id={this.state.singleContact.id} delete = {this.openDeleteModalHandler} close={this.closeDeleteModalHandler}/></Modal>}
-                    <ToastContainer 
-                    position="top-right"
-                    autoClose={2000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss={false}
-                    draggable={false}
-                    pauseOnHover={false}/>
+                    <DeleteContact clicked={this.deleteContact} id={this.state.singleContact.id} delete = {this.openDeleteModalHandler} close={this.closeDeleteModalHandler}/>
+                </Modal>}
+
+                {/*Component de notificacoes */}
+                <ToastContainer 
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}/>
 
             </Auxiliar>
         )
