@@ -6,10 +6,10 @@ import Card from '../../../components/ui/cards/Card';
 import {FaRegWindowClose} from 'react-icons/fa';
 import classes from './DeleteCard.module.scss';
 
-const DeleteContact =()=>{
+const DeleteContact =(props)=>{
     return(
         <Auxiliar>
-            <Card  width={auxclass.MediumCard } >
+        
                     <div className={`row ${classes.DeleteCard}`}> 
                         
                         <div className={`col-12`}>
@@ -23,6 +23,7 @@ const DeleteContact =()=>{
                                 bgColor={auxclass.GreyBg} 
                                 color={auxclass.BlackCl}
                                 hover={auxclass.BtnGrey}
+                                clicked={props.close}
     
                                 >
                                     Cancelar
@@ -32,14 +33,15 @@ const DeleteContact =()=>{
                                 bgColor={auxclass.RedBg} 
                                 color={auxclass.WhiteCl}
                                 hover={auxclass.BtnRed}
-                                
+                                id={props.id}
+                                clicked={props.delete}
                                 >
                                     Sim, apagar
                             </Button>
                         </div>
                     </div>
 
-            </Card>
+           
         </Auxiliar>
     )
 };

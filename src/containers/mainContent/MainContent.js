@@ -12,6 +12,7 @@ import Modal from '../../components/ui/modal/Modal';
 import NewContact from '../contacts/newcontact/NewContact';
 import Backdrop from '../../components/ui/backdrop/Backdrop';
 import ContactDetails from '../contacts/contactdetails/ContactDetails';
+import DeleteContact from '../contacts/deletecontact/DeleteContact';
 class MainContent extends Component{
     
     state = {
@@ -77,15 +78,7 @@ class MainContent extends Component{
         axios.post('/api/v1/contacts', newContact, header).then(response=>{
             if(response.status===200){
                 this.setState({contact:{
-                    name:"",
-                    email:"",
-                    phone:"",
-                    website:"",
-                    company_name:"",
-                    category:"",
-                    street:"",
-                    city:"",
-                    zip_code:""
+                    name:"", email:"", phone:"", website:"", company_name:"", category:"", street:"", city:"", zip_code:""
                     },
                     newContactModalOpen:false,
                     showBackdrop:false,
@@ -123,6 +116,8 @@ class MainContent extends Component{
         axios.get(`/api/v1/contacts/${event.currentTarget.id}`, header).then(response=>{
             this.setState({singleContact:response.data, contactDetailsModalOpen:true,showBackdrop:true})
             console.log(response.data)
+        }).catch(error=>{
+            console.log(error.response.data)
         })
         
         
@@ -131,6 +126,23 @@ class MainContent extends Component{
         this.setState({contactDetailsModalOpen:false,showBackdrop:false})
     }
     
+    openDeleteModalHandler = (event)=>{
+    
+        this.setState({contactDetailsModalOpen:false, deleteModalOpen:true })
+
+        const header = { headers:{
+            'content-type':'application/json',
+        }}
+        axios.delete(`/api/v1/contacts/${event.currentTarget.id}`,header).then(response=>{
+            console.log(response)
+        }).catch(error=>{
+            console.log(error.response.data)
+        })
+    }
+    
+    closeDeleteModalHandler =()=>{
+        this.setState({deleteModalOpen:false,showBackdrop:false})
+    }
 
 
     render(){
@@ -194,10 +206,11 @@ class MainContent extends Component{
                     <NewContact contact={this.state.contact} change={this.formOnChangeHandler} submit={this.formSubmitHandler} close={this.closeNewContactModalHandler} />
                 </Modal>
                 {this.state.contactDetailsModalOpen && <Modal show={this.state.contactDetailsModalOpen} >
-                       <ContactDetails  contact={this.state.singleContact} close={this.closeContactDetailsModalHandler}/> 
+                       <ContactDetails  showDelete={this.openDeleteModalHandler} contact={this.state.singleContact} close={this.closeContactDetailsModalHandler}/> 
                 </Modal> }
                 
-        
+                {this.state.deleteModalOpen && <Modal show={this.state.deleteModalOpen}>
+                    <DeleteContact delete = {this.openDeleteModalHandler} close={this.closeDeleteModalHandler}/></Modal>}
             </Auxiliar>
         )
     }

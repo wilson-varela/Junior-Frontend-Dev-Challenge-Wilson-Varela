@@ -50,7 +50,8 @@ const ContactDetails =(props)=>{
                                 bgColor={auxclass.RedBg} 
                                 color={auxclass.WhiteCl}
                                 hover={auxclass.BtnRed}
-                                
+                                clicked={props.showDelete}
+                                id={props.id}
                                 >
                                     <FaTrash/>
                             </Button>
