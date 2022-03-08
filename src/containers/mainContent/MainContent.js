@@ -121,7 +121,13 @@ class MainContent extends Component{
     }
     
     closeNewContactModalHandler =()=>{
-        this.setState({newContactModalOpen:false,showBackdrop:false})
+        this.setState({
+            newContactModalOpen:false,
+            showBackdrop:false,
+            contact:{
+                name:"", email:"", phone:"", website:"", company_name:"", category:"", street:"", city:"", zip_code:""
+            }
+        })
     }
 
     openContactDetailsModalHandler =(event)=>{
