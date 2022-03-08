@@ -17,11 +17,10 @@ const Contacts = (props) =>{
                     phone = {contact.phone}
                     clicked={props.clicked}
                     
-                >
-                    <Modal show={props.show} close={props.close}>
-                       <ContactDetails contact={contact} close={props.close}/> 
-                    </Modal>
-                </Contact>
+                />
+                    
+                    
+               
             )
         })
     );

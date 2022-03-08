@@ -11,7 +11,7 @@ import Contacts from '../contacts/Contacts';
 import Modal from '../../components/ui/modal/Modal';
 import NewContact from '../contacts/newcontact/NewContact';
 import Backdrop from '../../components/ui/backdrop/Backdrop';
-
+import ContactDetails from '../contacts/contactdetails/ContactDetails';
 class MainContent extends Component{
     
     state = {
@@ -20,6 +20,7 @@ class MainContent extends Component{
         contactDetailsModalOpen:false,
         deleteModalOpen:false,
         showBackdrop:false,
+        singleContact:[],
         contact:{
         name:"",
         email:"",
@@ -39,7 +40,7 @@ class MainContent extends Component{
                 this.setState({ contacts:response.data})
                 
             })
-
+           
     }
 
     formOnChangeHandler=(event)=>{
@@ -86,7 +87,9 @@ class MainContent extends Component{
                     city:"",
                     zip_code:""
                     },
-                    newContactModalOpen:false
+                    newContactModalOpen:false,
+                    showBackdrop:false,
+                    contacts: this.state.contacts.concat(response.data)
                 })
                 console.log(response)
             }
@@ -108,16 +111,26 @@ class MainContent extends Component{
         this.setState({newContactModalOpen:false,showBackdrop:false})
     }
 
-    openContactDetailsModalHandler =()=>{
+    openContactDetailsModalHandler =(event)=>{
+        event.preventDefault();
         
-        this.setState({contactDetailsModalOpen:true,showBackdrop:true})
+        console.log(event.currentTarget.id)
+        
+        
+        const header = { headers:{
+            'content-type':'application/json',
+        }}
+        axios.get(`/api/v1/contacts/${event.currentTarget.id}`, header).then(response=>{
+            this.setState({singleContact:response.data, contactDetailsModalOpen:true,showBackdrop:true})
+            console.log(response.data)
+        })
+        
+        
     }
     closeContactDetailsModalHandler =()=>{
         this.setState({contactDetailsModalOpen:false,showBackdrop:false})
     }
-    getContactDetails = (id)=>{
-        
-    }
+    
 
 
     render(){
@@ -170,6 +183,7 @@ class MainContent extends Component{
 
                 {/* Lista de contactos*/}
                 <Contacts 
+                 
                     clicked={this.openContactDetailsModalHandler} 
                     contacts={this.state.contacts} 
                     close={this.closeContactDetailsModalHandler} 
@@ -179,6 +193,9 @@ class MainContent extends Component{
                 <Modal show={this.state.newContactModalOpen} close={this.closeNewContactModalHandler}> 
                     <NewContact contact={this.state.contact} change={this.formOnChangeHandler} submit={this.formSubmitHandler} close={this.closeNewContactModalHandler} />
                 </Modal>
+                {this.state.contactDetailsModalOpen && <Modal show={this.state.contactDetailsModalOpen} >
+                       <ContactDetails  contact={this.state.singleContact} close={this.closeContactDetailsModalHandler}/> 
+                </Modal> }
                 
         
             </Auxiliar>

@@ -3,7 +3,7 @@ import  classes from './Button.module.scss';
 
 const Button =(props)=>{
     const classArray = [];
-    const btnTypeArray=[];
+    
 
     if(props.width){
         classArray.push(props.width)
@@ -26,18 +26,15 @@ const Button =(props)=>{
         classArray.push(props.mb)
     }
     
-    if(props.type){
-        btnTypeArray.push(props.type)
-    }
     
     if(props.clicked){
         return(
-            <button className={`${classes.Btn} ${classArray.join(' ')}`} type={btnTypeArray.join(' ')} onClick={props.clicked}>
+            <button className={`${classes.Btn} ${classArray.join(' ')}`}  id={props.id} onClick={props.clicked}>
                     {props.children}</button>
         );
     }else{
         return(
-            <button className={`${classes.Btn} ${classArray.join(' ')}`} type={btnTypeArray.join(' ')}>
+            <button className={`${classes.Btn} ${classArray.join(' ')}`} >
                     {props.children}</button>
         );
     }

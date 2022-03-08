@@ -2,6 +2,7 @@ import React from 'react';
 import Backdrop from '../backdrop/Backdrop';
 import Auxiliar from '../../../containers/auxiliar/Auxiliar';
 import classes from './Modal.module.scss';
+
 const Modal = (props) =>{
     
     return(

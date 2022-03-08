@@ -27,6 +27,7 @@ const Contact = (props) =>{
                                 color={auxclass.WhiteCl}
                                 hover={auxclass.BtnGreen}
                                 clicked={props.clicked}
+                                id={props.id}
                                 
                                 >
                                     <FaExpandAlt/>
@@ -34,7 +35,7 @@ const Contact = (props) =>{
                         </div>
 
                     </div>
-                    {props.children}
+
                 </Card>
     )
 

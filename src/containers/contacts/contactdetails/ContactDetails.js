@@ -37,11 +37,11 @@ const ContactDetails =(props)=>{
                             <p className={` ${auxclass.SemMargem} ${classes.GreyCl}`}>{props.contact.email}</p>
                         </div> 
                         <div className={`col-12 ${auxclass.ContactDetailsBody} ${classes.ContactDetailsBody}`}>
-                            <p ><span className={classes.Icon}><FaHome/></span>xxxxx</p>
-                            <p ><span className={classes.Icon}><FaPhoneAlt/></span>xxxxx</p>
-                            <p ><span className={classes.Icon}><FaRegMap/></span>xxxxx</p>
-                            <p ><span className={classes.Icon}><FaRegFileImage/></span>xxxxx</p>
-                            <p ><span className={classes.Icon}><FaRegBookmark/></span>xxxxx</p>
+                            <p ><span className={classes.Icon}><FaHome/></span>{props.contact.company.name}</p>
+                            <p ><span className={classes.Icon}><FaPhoneAlt/></span>{props.contact.phone}</p>
+                            <p ><span className={classes.Icon}><FaRegMap/></span>{`${props.contact.address.street},${props.contact.address.city}`}</p>
+                            <p ><span className={classes.Icon}><FaRegFileImage/></span>{props.contact.address.zipCode}</p>
+                            <p ><span className={classes.Icon}><FaRegBookmark/></span>{props.contact.company.type}</p>
                         </div>
                         <div className={`col-12 ${classes.ContactDetailsFooter}`}>
             
