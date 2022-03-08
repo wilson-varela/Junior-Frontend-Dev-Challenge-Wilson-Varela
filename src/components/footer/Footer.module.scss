@@ -2,5 +2,15 @@
     padding: 2px 0;
     background-color: #22C68C;
     text-align: center;
+    font-size: 0.9375rem;
     
+}
+.Footer span{
+    font-weight: 600;
+}
+
+@media (max-width: 471px){
+    .Footer{
+        font-size: 3vw;
+    }
 }

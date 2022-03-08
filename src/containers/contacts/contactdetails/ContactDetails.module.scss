@@ -1,0 +1,66 @@
+.ContactDetails{
+    padding: 10px;
+}
+
+.ContactDetails img{
+    height: 50px;
+    border-radius: 50%;
+}
+.ContactDetailsBody{
+    margin-top:15px!important;
+}
+.ContactDetailsBody p{
+    margin-bottom:4px;
+}
+
+.ContactDetailsFooter{
+    text-align: right;
+}
+
+.ContactDetailsFooter svg{
+    font-size: 0.875rem;
+}
+.Icon{
+    margin-right: 12px;
+    width:5%;
+    float:left;
+}
+
+.AlignCenter{
+    text-align: center;
+}
+.GreyCl{
+    color:#ACACAD;
+}
+
+.TypeList{
+    list-style: none;
+    width: 85%;
+    float: left;
+    padding: 0;
+}
+.TypeList li{
+    width: auto;
+    padding: 0 4px;
+    float: left;
+    text-align: center;
+    background: #A8FFE0;
+    margin-right: 4px;
+}
+.FullWidth{
+    width:100%;
+}
+
+
+@media (max-width:400px){
+    .ProfilePic{
+        width:100%;
+        float:left;
+        text-align: center;
+    }
+    .Name{
+        width:100%;
+        float:left;
+        text-align: center;
+    }
+}

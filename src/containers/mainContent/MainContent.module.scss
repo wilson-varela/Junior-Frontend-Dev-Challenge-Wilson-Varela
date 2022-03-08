@@ -1,0 +1,322 @@
+//gerais
+.TextAlignCenter{
+    text-align: center;
+}
+.TextAlignRight{
+    text-align: right;
+}
+
+.FloatLeft{
+    float: left;
+}
+//Espaço entre os cards contactos e os cards criar novo e filtro
+.LineSeparator{
+    width: 100%;
+    float: left;
+    height: 20px;
+}
+
+//Colors and bg
+.GreenBg{
+    background: rgb(50,167,126);
+    background: linear-gradient(146deg, rgba(50,167,126,1) 13%, rgba(34,194,138,1) 14%);
+}
+.RedBg{
+    background: rgb(245, 42, 42);
+    background: linear-gradient(146deg, rgb(245, 42, 42,1) 20%, rgba(255, 58, 58,1) 21%);
+}
+.WhiteBg{
+    background-color: #fff;
+}
+.GreyBg{
+    background-color: #d8d8d8;
+}
+.WhiteCl{
+    color:#fff;
+}
+.BlackCl{
+    color:#000;
+}
+.GreenCl{
+    color:rgb(50,167,126);
+}
+.RedCl{
+    color:rgb(245, 42, 42);
+}
+.GreyCl{
+    color:#ACACAD;
+}
+// Font weight
+.Bold{
+    font-weight: 600;
+}
+//Cards
+.SmallCard, .MediumCard, .LargeCard, .ExtraSmallCard, .ContactsCard{
+    width:100%;
+    padding: 5px 8px;
+    float:left;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+.ExtraSmallCard{
+    width: 48%;
+    margin-right:2%;
+}
+.ContactsCard{
+    width:49%;
+}
+
+
+.ContactsCardMargin{
+    margin-right: 2%;
+}
+
+.ContactsCardMargin:nth-child(odd){
+    margin-right: 0;
+}
+
+//Inputs
+.SmallInput{
+    width: 33%;
+    float: left;
+    margin-right:2%;
+}
+
+.MediumInput{
+    width:49%;
+    float: left;
+}
+
+.MediumInput:nth-child(odd){
+    margin-right:2%;
+}
+
+
+
+
+//Buttons
+.ExtraSmallBtn{
+    width: 15%;
+    padding: 4px !important;
+    font-size: 0.75rem !important;
+}
+.SmallBtn{
+    width:30%;
+}
+.MediumBtn{
+    width:60%;
+}
+.CloseModalBtn{
+    width:25px;
+    padding: 4px !important;
+    font-size: 0.75rem !important;
+}
+
+.BtnFiltro{
+    margin-top: 17px!important;
+    font-size: 0.8rem;
+}
+
+.BtnGrey:hover{
+    background-color: rgb(238, 238, 238);
+    transition: ease-in 0.3s;
+}
+.BtnGreen:hover{
+    background: rgba(50,167,126,0.8);
+    background: linear-gradient(146deg, rgba(50,167,126,0.8) 15%, rgba(34,194,138,0.8) 17%);
+    transition: ease-in-out 1s;
+}
+.BtnRed:hover{
+    background: rgb(245, 42, 42,0.8);
+    background: linear-gradient(146deg, rgb(245, 42, 42,0.8) 25%, rgba(255, 58, 58,0.8) 26%);
+    transition: ease-in-out 1s;
+}
+//Adiciona margin-bottom ao botao novo contacto
+.BtnNovomb{
+    margin-bottom: 21px!important;
+}
+
+//Icons
+.Icon{
+    margin: 5px 0;
+}
+.Icon svg{
+    height: 35px;
+    width: 80px;
+    color: rgba(255, 255, 255, 0.30);
+    border-radius: 10px;
+}
+
+//
+.NrContactos{
+    font-family: 'Roboto',sans-serif;
+    font-size: 2.8125rem;
+    font-weight: 700;
+    color:#22C28A;
+    text-align: center;
+}
+
+.Titulo{
+    font-size: 1.625rem;
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+
+.SimpleText{
+    margin: 0;
+    font-size: 0.75rem;
+}
+.SemMargem{
+    margin:0;
+}
+//Div Filtro
+.Separador{
+    border-top: 1px solid #22C28A;
+    margin-top:4px;
+    margin-bottom: 0;
+    padding-top: 6px;
+}
+
+
+
+//Contactos
+.Contacts{
+    margin-top:10px;
+}
+//Card detalhes do contacto
+.ContactDetails{
+    font-size: 0.75rem;
+}
+.ContactDetails img{
+    border-radius: 50%;
+}
+
+.ContactDetailsBody{
+    width:85%;
+    margin: 8px auto;
+    color:#666666;
+    
+}
+.ContactDetailsFooter{
+    width:80%;
+    background: #E4F7F1;
+    padding: 4px 10px;
+    margin-right: 4%;
+    color:#666666;
+}
+
+.LeftBorder{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 4px;
+    height: 25.5px;
+    background: #22C28A;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+
+
+//Responsividade
+
+@media (min-width:768px) {
+    .ExtraSmallCard{
+        width: 23%;
+        margin-right: 2%;
+    }
+    .ExtraSmallCard:nth-child(4n){
+        margin-right: 0;
+    }
+    .SmallCard, .ContactsCard{
+        width:32%;
+    }
+    .MediumCard{
+        width:66%;
+    }
+    .ContactsCardMargin:nth-child(odd){
+        margin-right: 2%;
+    }
+
+    .ContactsCardMargin:nth-child(3n){
+        margin-right: 0;
+    }
+
+
+    .Ml{
+        margin-left: 2%;
+    }
+    .Mr{
+        margin-right: 2%;
+    }
+
+    
+}
+
+@media (max-width:575px){
+    .ProfileImage{
+        width:25%;
+        float:left;
+    }
+    .ProfileName{
+        width:75%;
+        float:left;
+    }
+}
+@media (max-width: 471px){
+    .NrContactos{
+        font-size: 6vw;
+        padding-top: 2px;
+    }
+    
+
+    .Titulo{
+        font-size:4vw;
+    }
+
+    .ContactDetails{
+        font-size: 2vw;
+    }
+    .LeftBorder{
+        height: 5.5vw;
+    }
+    .ExtraSmallBtn{
+        font-size: 2vw!important;
+    }
+    .ProfileImage, .ProfileName  
+    {
+        width:100%;
+        text-align: center;
+    }
+    .ProfileImage img{
+        width:8vw;
+    }    
+    .SimpleText{
+        font-size: 2.4vw;
+    }
+    .AddContact p{
+        font-size: 3vw!important;
+    }
+    .AddContact .Icon svg{
+        height: 7vw;
+        
+        
+    }
+    .AddContact button{
+        font-size: 2vw;
+    }
+}
+@media(max-width:275px){
+    .NrContactos{
+        font-size: 3vw;
+        
+    }
+}
+
+
+
+@media (max-width:300px){
+    .MediumInput{
+        width:100%;
+    }
+}

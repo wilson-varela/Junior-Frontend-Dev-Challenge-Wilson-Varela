@@ -1,0 +1,22 @@
+.InputDiv label, .InputDiv input{
+    display:block;
+    font-size: 0.75rem;
+}
+
+.InputDiv label{
+    color:#ACACAD;
+}
+.InputDiv input{
+    padding: 2px 6px;
+    width: 100%;
+}
+.LeftBorder{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 4px;
+    height: 25.5px;
+    background: #22C28A;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
