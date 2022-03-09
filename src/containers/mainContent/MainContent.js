@@ -15,6 +15,7 @@ import ContactDetails from '../contacts/contactdetails/ContactDetails';
 import DeleteContact from '../contacts/deletecontact/DeleteContact';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import validator from 'validator';
 
 class MainContent extends Component{
   
@@ -71,45 +72,49 @@ class MainContent extends Component{
     formSubmitHandler =(event)=>{
         event.preventDefault();
 
-        
-        const newContact = JSON.stringify({
-            name:this.state.contact.name,
-            email:this.state.contact.email,
-            phone:this.state.contact.phone,
-            website:this.state.contact.website,
-            addressStreet:this.state.contact.street,
-            addressCity:this.state.contact.city,
-            addressZipCode:this.state.contact.zip_code,
-            companyName:this.state.contact.company_name,
-            companyType:this.state.contact.category
+        if(!validator.isEmail(this.state.contact.email)){
+            toast.warn("Email inválido.")
+        }else{
+            const newContact = JSON.stringify({
+                name:this.state.contact.name,
+                email:this.state.contact.email,
+                phone:this.state.contact.phone,
+                website:this.state.contact.website,
+                addressStreet:this.state.contact.street,
+                addressCity:this.state.contact.city,
+                addressZipCode:this.state.contact.zip_code,
+                companyName:this.state.contact.company_name,
+                companyType:this.state.contact.category
 
-        })
-        
-        const header = { headers:{
-            'content-type':'application/json',
-        }}
-        
-        axios.post('/api/v1/contacts', newContact, header).then(response=>{
-            if(response.status===200){
-                this.setState({contact:{
-                    name:"", email:"", phone:"", website:"", company_name:"", category:"", street:"", city:"", zip_code:""
-                    },
-                    newContactModalOpen:false,
-                    showBackdrop:false
-                })
-                toast.success('Gravado com sucesso.')
-                this.getContacts()
-               
-            }
-           
-        }).catch(error=>{
-            if(error){
-               toast.warn('Erro ao gravar.') 
-                
-            }
+            })
             
-        })
-        
+            const header = { headers:{
+                'content-type':'application/json',
+            }}
+            
+            
+
+            axios.post('/api/v1/contacts', newContact, header).then(response=>{
+                if(response.status===200){
+                    this.setState({contact:{
+                        name:"", email:"", phone:"", website:"", company_name:"", category:"", street:"", city:"", zip_code:""
+                        },
+                        newContactModalOpen:false,
+                        showBackdrop:false
+                    })
+                    toast.success('Gravado com sucesso.')
+                    this.getContacts()
+                
+                }
+            
+            }).catch(error=>{
+                if(error){
+                toast.warn('Erro ao gravar.') 
+                    
+                }
+                
+            })
+     }
         
 
     }
